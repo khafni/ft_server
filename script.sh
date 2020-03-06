@@ -17,3 +17,5 @@ wget https://repo.mysql.com//mysql-apt-config_0.8.15-1_all.deb
 export DEBIAN_FRONTEND=noninteractive
 
 echo mysql-apt-config mysql-apt-config/select-server select mysql-5.7 | debconf-set-selections
+
+apt update ; apt install mysql-server
