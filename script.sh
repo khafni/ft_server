@@ -18,4 +18,6 @@ export DEBIAN_FRONTEND=noninteractive
 
 echo mysql-apt-config mysql-apt-config/select-server select mysql-5.7 | debconf-set-selections
 
+dpkg -i *
+
 apt update ; apt install mysql-server
