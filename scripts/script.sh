@@ -31,7 +31,8 @@ rm -Rf /tmp/*
 #installing php and php extensions:
 
 apt install -y php7.3-fpm php7.3-cli php7.3-common php7.3-curl php7.3-gd php7.3-mbstring php7.3-mysql php7.3-xml php7.3-xmlrpc php7.3-zip php-curl php-gd php-intl php-mbstring php-soap php-xml php-xmlrpc php-zip
-
+mv ~/default /etc/nginx/sites-available/default
+#phpmyadmin installation
 cd /tmp
 wget https://files.phpmyadmin.net/phpMyAdmin/4.9.0.1/phpMyAdmin-4.9.0.1-english.tar.gz
 tar xzf *
@@ -39,9 +40,9 @@ rm *.gz
 mv * /var/www/html/phpmyadmin
 rm -Rf *
 cp /var/www/html/phpmyadmin/config{.sample,}.inc.php
-#commands for the blowfish secret
-#chmod 660 /var/www/html/phpmyadmin/config.inc.php
-#chown -R www-data:www-data /var/www/html/phpmyadmin
+mv ~/config.inc.php /var/www/html/phpmyadmin/config.inc.php
+chmod 660 /var/www/html/phpmyadmin/config.inc.php
+chown -R www-data:www-data /var/www/html/phpmyadmin
 
-#service nginx stop ; service mysql stop ; service php7.3-fpm stop
-#service nginx start ; service mysql start ; service php7.3-fpm start
+service nginx stop ; service mysql stop ; service php7.3-fpm stop
+service nginx start ; service mysql start ; service php7.3-fpm start
