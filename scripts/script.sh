@@ -44,5 +44,24 @@ mv ~/config.inc.php /var/www/html/phpmyadmin/config.inc.php
 chmod 660 /var/www/html/phpmyadmin/config.inc.php
 chown -R www-data:www-data /var/www/html/phpmyadmin
 
+#wordpress installation
+
+#Configuring the WordPress Database
+service nginx stop ; service mysql stop ; service php7.3-fpm stop
+service nginx start ; service mysql start ; service php7.3-fpm start
+#Configuring the WordPress Database
+cat ~/wdpress.sql | mysql --user=root --password=H
+#installing wordpress
+cd /tmp
+wget https://wordpress.org/latest.tar.gz
+tar -xvzf latest.tar.gz
+mv wordpress/ /var/www/html/
+rm -Rf /tmp/*
+cd /var/www/html/wordpress/
+mv ~/wp-config.php .
+chown -R www-data:www-data /var/www/html/wordpress
+mv ~/wordpress.conf /etc/nginx/sites-available/wordpress.conf
+ln -s /etc/nginx/sites-available/wordpress.conf /etc/nginx/sites-enabled/
+
 service nginx stop ; service mysql stop ; service php7.3-fpm stop
 service nginx start ; service mysql start ; service php7.3-fpm start
