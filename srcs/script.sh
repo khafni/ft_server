@@ -67,5 +67,6 @@ mysql --user=root --password=H wpdb < ~/wpdb.sql
 cd /var/www/html
 mv phpmyadmin/ wordpress/phpmyadmin
 mv ~/localhost* /
-service nginx stop ; service mysql stop ; service php7.3-fpm stop
-service nginx start ; service mysql start ; service php7.3-fpm start
+bash
+#service nginx stop ; service mysql stop ; service php7.3-fpm stop
+#service nginx start ; service mysql start ; service php7.3-fpm start ; cat
