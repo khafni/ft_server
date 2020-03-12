@@ -62,6 +62,8 @@ mv ~/wp-config.php .
 chown -R www-data:www-data /var/www/html/wordpress
 mv ~/wordpress.conf /etc/nginx/sites-available/wordpress.conf
 ln -s /etc/nginx/sites-available/wordpress.conf /etc/nginx/sites-enabled/
+#cat ~/restore_website.sql | mysql --user=root --password=H
+mysql --user=root --password=H wpdb < ~/wpdb.sql
 
 service nginx stop ; service mysql stop ; service php7.3-fpm stop
 service nginx start ; service mysql start ; service php7.3-fpm start
